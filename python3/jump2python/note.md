@@ -13,6 +13,8 @@
 	- [2-1. if](#section-2-1)
 	- [2-2. while](#section-2-2)
 	- [2-3. for](#section-2-3)
+- [3. 입출력](#section-3)
+	- [3-1. 함수](#section-3-1)
 
 ---
 <a id="section-1"></a>
@@ -965,5 +967,90 @@ for name, kor, eng in zip(names, korean, english):
 홍길동: 국어 85점, 영어 90점
 김철수: 국어 92점, 영어 88점
 이영희: 국어 78점, 영어: 95점
+```
+<a id="section-3"></a>
+# 3. 입출력
+<a id="section-3-1"></a>
+## 3-1. 함수
+```python
+# 함수 구조
+# def: 함수 생성 예약어
+def 함수_이름(매개변수):
+	수행할_문장1
+	수행할_문장2
+	...
+
+# 이 함수의 이름은 add이고 입력으로 2개의 값을 받으며 반환값(출력값)은 2개의 입력값을 더한 값이다.
+def add(a, b):
+	return a + b
+
+a = 3
+b = 4
+c = add(a, b)
+print(c)
+7
+
+# 매개변수(parameter): 함수에 입력으로 전달된 값을 받는 변수
+def add(a, b):
+	return a+b
+
+# 인수(arguments): 함수를 호출할 때 전달하는 입력값
+print(add(3,4))
+
+# 일반적인 함수
+def 함수_이름(매개변수):
+	수행할_문장
+	...
+	return 반환값
+
+def add(a,b):
+	result = a + b
+	return result
+
+# 입력값과 반환값이 있는 함수의 사용법
+# 반환값을_받을_변수 = 함수_이름(입력_인수1, 입력_인수2 ...)
+a = add(3, 4)
+print(a)
+7
+
+# 입력값이 없는 함수
+# 반환값을_받을_변수 = 함수_이름()
+def say():
+	return 'Hi'
+
+a = say()
+print(a)
+Hi
+
+# 반환값이 없는 함수
+# 출력 형식일 뿐 값을 담아주진 않음
+함수_이름(입력_인수1, 입력_인수2)
+def add(a, b):
+print("%d, %d의 합은 %d입니다." % (a, b, a+b))
+
+add(3, 4)
+3, 4의 합은 7입니다.
+
+# 입력값도, 반환값도 없는 함수
+def say():
+	print('Hi')
+
+say()
+Hi
+
+# 매개변수 지정해서 호출
+def sub(a, b):
+	return a - b
+
+result = sub(a=7, b=3)
+print(result)
+4
+
+result = sub(b=5, a=3)
+print(result)
+-2
+
+# 입력값 갯수를 모를 때
+
 
 ```
