@@ -9,6 +9,10 @@
 	- [1-6. 집합](#section-1-6)
 	- [1-7. 불](#section-1-7)
 	- [1-8. 변수](#section-1-8)
+- [2. 제어문](#section-2)
+	- [2-1. if](#section-2-1)
+	- [2-2. while](#section-2-2)
+	- [2-3. for](#section-2-3)
 
 ---
 <a id="section-1"></a>
@@ -688,4 +692,278 @@ False, None, True, and, as, assert, break, class, continue, def,
 del, elif, else, except, finally, for, from, global, if, import,
 in, is, lambda, nonlocal, not, or, pass, raise, return, try,
 while, with, yield
+```
+
+---
+<a id="section-1"></a>
+# 2. 제어문
+<a id="section-2-1"></a>
+## 2-1. if
+```python
+# if, else 기본 구조
+# 모든 문장에 들여쓰기를 해야한다.
+if 조 건 문 :
+	수 행 할_문 장 1
+	수 행 할_문 장 2
+	...
+else:
+	수 행 할_문 장 A
+	수 행 할_문 장 B
+	...
+
+# 예시
+# 만 약 3000 원 이 상 의 돈 을 가 지 고 있 으 면 택 시 를 타 고 가 고 , 그 렇 지 않 으 면 걸 어 가 라.
+money = 2000
+if money >= 3000:
+	print("택시를 타고 가라")
+else:
+    print("걸어가라")
+걸어가라
+
+# 조건 연산자: and, or, not
+# 돈이 3000원 이상 있거나 카드가 있다면 택시를 타고 가고, 그렇지 않으면 걸아가라.
+>>> money = 2000
+>>> card = True
+if money >= 3000 or card:
+	print(" 택 시 를 타 고 가 라")
+else:
+	print(" 걸 어 가 라")
+>>>
+택 시 를 타 고 가 라
+
+# in, not in
+in           not in
+x in 리스트   x not in 리스트
+x in 튜플     x not in 튜플
+x in 문자열    x not in 문자열
+
+# 1이 리스트에 있는가?
+1 in [1, 2, 3]
+True
+
+# 1이 리스트에 없는가?
+1 not in [1, 2, 3]
+False
+
+# 만약 주머니에 돈이 있으면 택시를 타고 가고, 없으면 걸어가라.
+pocket = ['paper', 'cellphone', 'money']
+if 'money' in pocket:
+    print("택시를 타고 가라")
+else:
+    print("걸어가라")
+택시를 타고 가라
+
+# 조건문에서 아무 일도 하지 않게 설정: pass
+pocket = ['paper', 'cellphone', 'money']
+if 'money' in pocket:
+    pass
+else:
+    print("걸어가라")
+
+# elif: 다양한 조건
+# 주 머 니 에 돈 이 있 으 면 택 시 를 타 고 가 고 , 주 머 니 에 돈은 없지만 카드가 있으면 택시를 타고 가고, 돈도 없고 카드도 없으면 걸어가라
+pocket = ['paper', 'cellphone']
+card = True
+
+if 'money' in pocket:
+	print("택시를 타고 가라")
+elif card:
+	print("택시를 타고 가라")
+else:
+	print("걸어가라")
+	
+택시를 타고 가라
+
+# 좀 더 간략하게 if문 작성
+pocket = ['paper', 'cellphone', 'money']
+if 'money' in pocket: pass
+else: print("걸어가라")
+
+# 비교 연산자
+x = 5
+(1 < x) and (x < 10)
+True
+(10 <= x) and (x <= 20)
+False
+
+# 조건부 표현식
+score = 85
+if score >= 60:
+	result = "합격"
+else:
+	result = "불합격"
+print(result)
+합격
+
+# 간단하게 표현
+# 변수 = 참일 때 값 if 조건 else 거짓일 때 값
+score = 85
+result = "합격" if score >= 60 else "불합격"
+```
+<a id="section-2-2"></a>
+## 2-2. while
+```python
+
+```
+<a id="section-2-3"></a>
+## 2-3. for
+```python
+# 기본 구조
+for 변수 in 리스트(또는 튜플, 문자열):
+	수행할 문장1
+	수행할 문장2
+	...
+
+# 기본 for문
+test_list = ['one', 'two', 'three']
+for i in test_list:
+	print(i)
+one
+two
+three
+
+# 다양한 for 문의 사용
+# 튜플이기 때문에 각각의 요소가 자동으로 변수에 대입이 됨
+a = [(1,2), (3,4), (5,6)]
+for (first, last) in a:
+	print(first + last)
+3
+7
+11
+
+# 응용 문제
+# 총 5 명 의 학 생 이 시 험 을 보 았 는 데 시 험 점 수 가 60 점 이 상 이 면 합 격 이 고 그 렇 지 않 으 면 불 합 격 이 다. 합 격 인 지 , 불 합 격 인 지 결 과 를 보 여 주 시 오 .
+marks = [90, 25, 67, 45, 80]
+number = 0
+for mark in marks:
+	number = number +1
+	if  mark >= 60:
+		print("%d 번 학 생 은 합 격 입 니 다." % number)
+	else:
+		print("%d 번 학 생 은 불합격 입 니 다." % number)
+
+# continue: for 문 안의 문장을 수행하는 도중 continue 문을 만나면 for문의 처음으로 돌아감
+marks = [90, 25, 67, 45, 80]
+number = 0
+for mark in marks:
+	number = number +1
+	if mark < 60:
+		continue
+	print("%d번 학생 축하합니다.  합격입니다." % number)
+
+# range: 숫자 리스트를 자동으로 만들어줌
+# range(10): 0부터 10미만의 수를 포함하는 range 객체를 만들어줌
+# 시작과 끝 지정 지 range(시작_숫자, 끝_숫자) 형태를 사용하는데 이때 끝 숫자는 포함되지 않는다.
+a = range(10)
+a
+range(0, 10)
+
+# 예시: 1에서 10까지 더하는 숫자
+add = 0
+for i in range(1, 11):
+	add = add + 1
+print(add)
+55
+
+# 합격 축하 문장 출력 예제
+# len: 리스트 안의 요소 개수 리턴
+marks = [90, 25, 67, 45, 80]
+for number in range(len(marks)):
+	if marks[number] < 60:
+		continue
+	print("%d번 학생 축하합니다. 합격입니다." % (number+1))
+
+# 구구단
+# end: 다음줄로 넘기지않고 계속 출력
+# print('') 그 다음줄로 구분하기
+for i in range(2, 10):
+	for j in range(1, 10):
+		print(i*j, end=" ")
+	print('')
+
+# 리스트 컴프리헨션
+# append: 리스트 요소 추가
+# 전
+a = [1,2,3,4]
+result = []
+for num in a:
+	result.append(num*3)
+print(result)
+[3, 6, 9, 12]
+
+# 후
+a = [1,2,3,4]
+result = [num * 3 for num in a]
+print(result)
+[3, 6, 9, 12]
+
+# 인덱스 예시
+a = [1, 2, 3, 4]
+for idx, num in enumerate(a):
+	print(idx, num)
+0 1
+1 2
+2 3
+3 4
+
+# 짝수만 3으로 곱하기
+a = [1, 2, 3, 4]
+result = [num * 3 for num in a if num %2 == 0]:
+print(result)
+[6, 12]
+
+# break
+for i in range(10):
+	if i == 5:
+		break
+	print(i)
+0
+1
+2
+3
+4
+
+#for-else: for문이 정상적으로 종료되었을 때 (break문으로 빠져나가면 else절은 실행안됨)
+for i in range(5):
+	print(i)
+else:
+	print("for문이 정상적으로 종료되었습니다.")
+0
+1
+2
+3
+4
+for문이 정상적으로 종료되었습니다.
+
+
+# enumerate: 리스트 인덱서와 함께 쓸 때, 0부터 시작하는 인덱스 번호를 자동으로 생성해줌
+fruits = ['apple', 'banana', 'orange']
+for i, fruit in enumerate(fruits):
+	print(f"{i}: {fruit}")
+0: apple
+1: banana
+2: orange
+
+# enumerate 인덱스 시작 번호를 변경하고 싶을 때
+for i, fruit in enumerate(fruits, 1)
+
+# zip: 여러 리스트 함께 순회
+# f: 포맷팅
+names=['홍길동', '김철수', '이영희']
+scores=[85, 92, 78]
+for name, score in zip(names, scores):
+	print(f"{name}: {score}점")
+홍길동: 85점
+김철수: 92점
+이영희: 78점
+
+names = ['홍길동', '김철수', '이영희']
+korean = [85, 92, 78]
+english = [90, 88, 95]
+for name, kor, eng in zip(names, korean, english):
+	print(f"{name}: 국어 {kor}점, 영어 {eng}점")
+홍길동: 국어 85점, 영어 90점
+김철수: 국어 92점, 영어 88점
+이영희: 국어 78점, 영어: 95점
+
 ```
