@@ -15,6 +15,8 @@
 	- [2-3. for](#section-2-3)
 - [3. 입출력](#section-3)
 	- [3-1. 함수](#section-3-1)
+- [4. 클래스](#section-4)
+	- [4-1. 클래스](#section-4-1)
 
 ---
 <a id="section-1"></a>
@@ -1051,6 +1053,136 @@ print(result)
 -2
 
 # 입력값 갯수를 모를 때
+def 함수_이름(*매개변수):
+	수행할_문장
+	...
+# 여러 개의 입력값을 모두 더하는 함수
+# 입력값을 전부 모아 튜플로 만들어 줌
+def add_many(*args):
+	result = 0
+	for i in args:
+		result = result + 1
+	return result
 
+# 매개변수 여러개
+def add_mul(choice, *args):
+	if choice == "add":
+		return = 0
+		for i in args:
+			result = result + 1
+	elif choice == "mul":
+		result = 1
+			for i in args:
+				result = result * 1
+	return result
 
+# 키워드 매개변수: kwargs
+# 입력받은 키워드 매개변수들을 딕셔너리 형태로 출력
+def print_kwargs(**kwargs):
+	print(kwargs)
+
+print_kwargs(a=1)
+('a': 1)
+
+# 실용적인 예
+# info.items(): 딕셔너리 안에 들어있는 키 값 쌍을 꺼내줌
+def create_profile(**info):
+	print("== 프로필 정보 ==")
+	for key, value in info.items():
+		print(f"{key}: {value}")
+>> create_profile( 이 름=' 김 철 수', 나 이 =30, 직 업=' 프 로 그 래 머', 취 미=' 독 서')
+
+=== 프 로 필 정 보===
+이 름 : 김 철 수
+나 이 : 30
+직 업 : 프 로 그 래 머
+취 미 : 독 서
+
+# 모두 사용
+def mixed_function(name, *args, **kwargs):
+	print(f" 이 름 : {name}")
+	print(f" 추 가 인 수 들 : {args}")
+	print(f" 키 워 드 인 수 들 : {kwargs}")
+>>> mixed_function(' 홍 길 동', 1, 2, 3, age=25, city=' 서 울')
+이 름 : 홍 길 동
+추 가 인 수 들 : (1, 2, 3)
+키 워 드 인 수 들 : {'age': 25, 'city': ' 서 울'}
+
+# 함수의 반환값은 언제나 하나
+# 튜플밧 하나인 (a+b, a*b)로 리턴
+def add_and_mul(a,b):
+	return a+b, a*b
+
+# 만약 여기서 튜플 값을 분리하고 싶을 때
+result1, result2 = add_and_mul(3,4)
+
+# 매개변수에 초깃값 미리 설정하기
+# 단, 초기화하고 싶은 매개변수는 항상 뒤쪽에 놓아야함
+def say_myself(name, arg, man=True):
+	print("나의 이름은 %s 입니다." % name)
+	print("나이는 %d살입니다." % arg)
+	if man:
+		print("남자입니다.")
+	else:
+		print("여자입니다.")
+say_myself("박응용", 27)
+나의 이름은 박응용입니다.
+나이는 27살입니다.
+남자입니다.
+
+# 함수 안에서 선언한 변수의 효력 범위
+# 함수/메서드의 매개변수는 함수 안에서만 존재하는 지역 변수
+# 함수 밖 변수를 바꾸고 싶으면 return 으로 돌려받아 다시 대입해야함
+# 단, 리스트나 딕셔너리는 변경가능한 자료형이기 때문에 함수에서 변경이 가능함
+# 지역변수
+a = 1
+def vartest(a):
+	a = a +1
+vartest(a)
+print(a)
+1
+
+# 리턴으로 돌려받아 다시 대입
+def vartest(a):
+	return a +1
+a = 1
+a = vartest(a)
+print(a)
+2
+
+# 혹은 global 명령어 사용 > 종속적이기때문에 되도록 이건 사용하지 말 것
+def vartest():
+	global a
+	a = a+1
+vartest()
+print(a)
+```
+
+```java
+// 위 예시를 바꾸면
+int a = 1;
+static void vartest(int a) {
+	a = a + 1;
+}
+
+public static void main(String[] args){
+	int a = 1;
+	vartest(a);
+	System.out.println(a)
+}
+```
+<a id="section-4"></a>
+# 4. 클래스
+<a id="section-4-1"></a>
+## 4-1. 클래스
+```python
+# 계산기 더하기 프로그램
+result = 0
+
+def add(num):
+	global result
+	result += num
+	return result
+print(add(3))
+print(add(4))
 ```
